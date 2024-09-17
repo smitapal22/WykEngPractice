@@ -6,8 +6,8 @@
 		</listeners>
   <test name="SigninTest">
 	  <classes>
-		  
-		  <class name="TestCases.ContactUsTest" />
+		  <class name="TestCases.SigninTest" />
+		 
 		</classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

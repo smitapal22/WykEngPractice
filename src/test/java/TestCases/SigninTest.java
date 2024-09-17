@@ -21,6 +21,7 @@ import utilities.Utilities;
 
 
 
+
 public class SigninTest extends Page {
 	String sheetName = "LoginTest";
 	HomePage homePage;
@@ -46,14 +47,15 @@ public class SigninTest extends Page {
 		signinOrRegisterPage = new SigninOrRegisterPage();
 		
 	}
-	@DataProvider
+	/*@DataProvider
 	public Object[][] getData(){
-		Object data[][] = Utilities.getTestData(sheetName);
+		Object data[][] = Utilities.getexData(sheetName);
 		return data;
-	}
+	}*/
 	
-	@Test(dataProvider="getData")
-	public void LoginTest(String username,String password) throws InterruptedException {
+	//@Test(dataProvider="getData")
+	@Test(dataProviderClass=Utilities.class,dataProvider="getData")
+	public void InvalidUserTest(String username,String password) throws InterruptedException {
 		
 		
 		homePage.clickOnEnBtn();
@@ -62,16 +64,34 @@ public class SigninTest extends Page {
 		homePage.clickOnMenuBtn();
 		menuPage.clickOnSigninOrRegisterOption();
 		signinOrRegisterPage.doLogin(username, password);
+		
 		String actualTextforInvalidUser = driver
-				.findElement(By.xpath("//div[@class='Toastify__toast Toastify__toast--success']")).getText();
+				.findElement(By.xpath("//div[@class='Toastify__toast Toastify__toast--success']/div[@class='Toastify__toast-body']")).getText();
+		//div[@class='wzrk-button-container']/button[@id='wzrk-cancel']
 		System.out.println("Actual invalid email toast msg: "+actualTextforInvalidUser);
+		System.out.println("Ending");
 		Thread.sleep(5000);
 		String expextedTextforInvalidUser = "Invalid email or password";
 		Assert.assertEquals(actualTextforInvalidUser, expextedTextforInvalidUser);
 		
 	}
 	
+	@Test(dataProviderClass=Utilities.class,dataProvider="getData")
+	public void ValidUserTest(String username, String password) {
+		homePage.clickOnEnBtn();
+		homePage.clickOnnoThanksBtn();
+		homePage.clickOnAcceptAll();
+		homePage.clickOnMenuBtn();
+		menuPage.clickOnSigninOrRegisterOption();
+		signinOrRegisterPage.doLogin(username, password);
+		homePage.clickOnMenuBtn();
+		String validUserdomain = driver.findElement(By.xpath("//*[contains(text(),'@maildrop.cc')]")).getText();
+		String expecteduserdomain = "maildrop.cc";
+		Assert.assertEquals(validUserdomain, validUserdomain);
+		
+	}
 	
+	//ValidUserTest
 	@AfterMethod
 	public void tearDown(){
 		if(driver!=null) {
