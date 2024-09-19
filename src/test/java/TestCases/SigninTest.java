@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -37,8 +38,10 @@ public class SigninTest extends Page {
 	
 	@BeforeMethod
 	public void settingUp() throws InterruptedException{
+		
 		initialization();
 		//utils = new Utilities();
+		//init_driver(prop);
 		
 		//Utilities.runTimeInfo("error", "login successful");
 		//Utilities.switchToFrame();
@@ -56,7 +59,6 @@ public class SigninTest extends Page {
 	//@Test(dataProvider="getData")
 	@Test(dataProviderClass=Utilities.class,dataProvider="getData")
 	public void InvalidUserTest(String username,String password) throws InterruptedException {
-		
 		
 		homePage.clickOnEnBtn();
 		homePage.clickOnnoThanksBtn();
@@ -85,9 +87,10 @@ public class SigninTest extends Page {
 		menuPage.clickOnSigninOrRegisterOption();
 		signinOrRegisterPage.doLogin(username, password);
 		homePage.clickOnMenuBtn();
-		String validUserdomain = driver.findElement(By.xpath("//*[contains(text(),'@maildrop.cc')]")).getText();
-		String expecteduserdomain = "maildrop.cc";
-		Assert.assertEquals(validUserdomain, validUserdomain);
+		String validUserdomain = driver.findElement(By.xpath("//span[contains(text(),'@maildrop.cc')]")).getText();
+		//String validUserdomain = driver.findElement(By.xpath("//*[ends-with(text(),'@maildrop.cc')]")).getText();
+		String expecteduserdomain = "iosa50@maildrop.cc";
+		Assert.assertEquals(validUserdomain, expecteduserdomain);
 		
 	}
 	

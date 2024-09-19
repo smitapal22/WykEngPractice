@@ -1,9 +1,11 @@
 package TestCases;
 
+import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,6 +26,7 @@ public class ContactUsTest extends Page{
 	ContactUsPage contactUsPage;
 	
 	
+	
 	public ContactUsTest() {
 		super();
 	}
@@ -31,7 +34,7 @@ public class ContactUsTest extends Page{
 	public void settingUp() throws InterruptedException{
 		initialization();
 		//utils = new Utilities();
-		
+		//init_driver(prop);
 		//Utilities.runTimeInfo("error", "login successful");
 		//Utilities.switchToFrame();
 		homePage = new HomePage();
@@ -51,7 +54,7 @@ public class ContactUsTest extends Page{
 		contactUsPage.EnterMobileNoInMobField("8676487678");
 		contactUsPage.EnterTextInContentField("Test");
 		contactUsPage.ClickOnSubmitBtn();
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		Wait<WebDriver> wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
 	    WebElement toastElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Thank you for contacting weyyak! we will be in touch with you shortly.']")));
 	    String toastMessage = toastElement.getText();
 	   // String expectedToastMessage = "Thank you for contacting weyyak! we will be in touch with you shortly.";

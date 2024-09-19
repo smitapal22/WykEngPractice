@@ -4,11 +4,18 @@
 	<listeners>
 	<listener class-name="utilities.ExtentReporterNG" />
 		</listeners>
-  <test name="SigninTest">
+  <test name="SigninTest - FF">
+	  <parameter name="broswer" value="firefox" />
 	  <classes>
 		  <class name="TestCases.SigninTest" />
-		  <class name="TestCases.ContactUsTest" />
 		 
 		</classes>
   </test> <!-- Test -->
+  <test name="SigninTest - Chrome">
+	  <parameter name="broswer" value="chrome" />
+	  <classes>
+		  <class name="TestCases.SigninTest" />
+		 
+		</classes>
+		</test> <!-- Test -->
 </suite> <!-- Suite -->
