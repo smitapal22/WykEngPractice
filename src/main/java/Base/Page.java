@@ -37,13 +37,13 @@ public class Page {
 	//public  static EventFiringDecorator e_driver;
 	//public static WebEventListener eventListener;
 	public static WebEventListener webEventListener;
-	/*public OptionsManager optionsManager;
+	//public OptionsManager optionsManager;
 	
-	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+	//public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
-	public static synchronized WebDriver getDriver() {
-		return tlDriver.get();
-	}*/
+	//public static synchronized WebDriver getDriver() {
+		//return tlDriver.get();
+	//}
 	
 	public Page(){
 		try {
@@ -58,17 +58,24 @@ public class Page {
 	}
 	
 	
-	public static void initialization(){
+	public static void initialization() throws MalformedURLException{
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equals("chrome")){
-			WebDriverManager.chromedriver().setup();
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.setCapability("browserName", "chrome");
+			driver= new RemoteWebDriver(new URL("http://localhost:4445/wd/hub"),chromeOptions);
+			//WebDriverManager.chromedriver().setup();
 			//System.setProperty("webdriver.chrome.driver", "/Users/naveenkhunteta/Downloads/chromedriver");	
-			driver = new ChromeDriver(); 
+			//driver = new ChromeDriver(); 
 		}
-		else if(browserName.equals("FF")){
-			WebDriverManager.firefoxdriver().setup();	
-			driver = new FirefoxDriver(); 
+		else if(browserName.equals("firefox")){
+			FirefoxOptions firefoxOptions = new FirefoxOptions();
+			firefoxOptions.setCapability("browserName", "firefox");
+			driver= new RemoteWebDriver(new URL("http://localhost:4445/wd/hub"),firefoxOptions);
+			//WebDriverManager.firefoxdriver().setup();	
+			//driver = new FirefoxDriver(); 
+			
 		}
 		
 		
@@ -87,7 +94,7 @@ public class Page {
 		driver.manage().timeouts().implicitlyWait(Utilities.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		
 		driver.get(prop.getProperty("url"));
-		driver.manage().deleteAllCookies();
+		//driver.manage().deleteAllCookies();
 		driver.get(prop.getProperty("url"));
 		
 	}

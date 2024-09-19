@@ -1,5 +1,7 @@
 package TestCases;
 
+import java.net.MalformedURLException;
+
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +33,7 @@ public class ContactUsTest extends Page{
 		super();
 	}
 	@BeforeMethod
-	public void settingUp() throws InterruptedException{
+	public void settingUp() throws InterruptedException, MalformedURLException{
 		initialization();
 		//utils = new Utilities();
 		//init_driver(prop);

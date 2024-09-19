@@ -1,5 +1,6 @@
 package TestCases;
 
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -37,7 +38,7 @@ public class SigninTest extends Page {
 	}
 	
 	@BeforeMethod
-	public void settingUp() throws InterruptedException{
+	public void settingUp() throws InterruptedException, MalformedURLException{
 		
 		initialization();
 		//utils = new Utilities();
