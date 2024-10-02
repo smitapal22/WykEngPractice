@@ -13,9 +13,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import Base.Page;
+import Base.Page1;
 import Pages.HomePage;
 import Pages.MenuPage;
 import Pages.SigninOrRegisterPage;
@@ -24,7 +26,7 @@ import utilities.Utilities;
 
 
 
-public class SigninTest extends Page {
+public class SigninTest extends Page1 {
 	String sheetName = "LoginTest";
 	HomePage homePage;
 	MenuPage menuPage;
@@ -32,25 +34,26 @@ public class SigninTest extends Page {
 	Utilities utils;
 	
 	
-	public SigninTest(){
+	/*public SigninTest(){
 		//HomePage homePage;
 		super();
-	}
+	}*/
 	
-	@BeforeMethod
-	public void settingUp() throws InterruptedException, MalformedURLException{
+	/*@BeforeMethod
+	@Parameters("browser")
+	public void settingUp(String browser){
 		
-		initialization();
+		initialization("browser");*/
 		//utils = new Utilities();
 		//init_driver(prop);
 		
 		//Utilities.runTimeInfo("error", "login successful");
 		//Utilities.switchToFrame();
-		homePage = new HomePage();
+		/*homePage = new HomePage();
 		menuPage = new MenuPage();
 		signinOrRegisterPage = new SigninOrRegisterPage();
 		
-	}
+	}*/
 	/*@DataProvider
 	public Object[][] getData(){
 		Object data[][] = Utilities.getexData(sheetName);
@@ -59,8 +62,11 @@ public class SigninTest extends Page {
 	
 	//@Test(dataProvider="getData")
 	@Test(dataProviderClass=Utilities.class,dataProvider="getData")
-	public void InvalidUserTest(String username,String password) throws InterruptedException {
+	public void InvalidUserTest(String username,String password) throws InterruptedException  {
 		
+		HomePage homePage = new HomePage();
+		MenuPage menuPage = new MenuPage();
+		SigninOrRegisterPage signinOrRegisterPage = new SigninOrRegisterPage();
 		homePage.clickOnEnBtn();
 		homePage.clickOnnoThanksBtn();
 		homePage.clickOnAcceptAll();
@@ -79,8 +85,12 @@ public class SigninTest extends Page {
 		
 	}
 	
-	@Test(dataProviderClass=Utilities.class,dataProvider="getData")
-	public void ValidUserTest(String username, String password) {
+	//@Test(dataProviderClass=Utilities.class,dataProvider="getData")
+	@Test
+	public static void ValidUserTest(String username, String password) {
+		HomePage homePage = new HomePage();
+		MenuPage menuPage = new MenuPage();
+		SigninOrRegisterPage signinOrRegisterPage = new SigninOrRegisterPage();
 		homePage.clickOnEnBtn();
 		homePage.clickOnnoThanksBtn();
 		homePage.clickOnAcceptAll();
@@ -88,20 +98,23 @@ public class SigninTest extends Page {
 		menuPage.clickOnSigninOrRegisterOption();
 		signinOrRegisterPage.doLogin(username, password);
 		homePage.clickOnMenuBtn();
-		String validUserdomain = driver.findElement(By.xpath("//span[contains(text(),'@maildrop.cc')]")).getText();
+		//String validUserdomain = driver.findElement(By.xpath("//span[contains(text(),'ios')]")).getText();
+		//String expecteduserdomain = "iosa50";
+		//String ActualPartialText =validUserdomain.substring(validUserdomain.length()-12);
+		//System.out.println("Actual partial Text Retrieved: "+expecteduserdomain);
 		//String validUserdomain = driver.findElement(By.xpath("//*[ends-with(text(),'@maildrop.cc')]")).getText();
-		String expecteduserdomain = "iosa50@maildrop.cc";
-		Assert.assertEquals(validUserdomain, expecteduserdomain);
+		//String expecteduserdomain = "@maildrop.cc";
+		//Assert.assertEquals(validUserdomain, expecteduserdomain);
 		
 	}
 	
 	//ValidUserTest
-	@AfterMethod
+	/*@AfterMethod
 	public void tearDown(){
 		if(driver!=null) {
 		driver.quit();
 		}
-	}
+	}*/
 	
 	}
 

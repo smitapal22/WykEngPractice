@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-09-19T05:26:03Z" name="Suite" finished-at="2024-09-19T05:26:44Z" duration-ms="41144">
+    <groups>
+    </groups>
+    <test started-at="2024-09-19T05:26:03Z" name="SigninTest" finished-at="2024-09-19T05:26:44Z" duration-ms="41144">
+      <class name="TestCases.ContactUsTest">
+        <test-method is-config="true" signature="settingUp()[pri:0, instance:TestCases.ContactUsTest@342c38f8]" started-at="2024-09-19T10:56:32Z" name="settingUp" finished-at="2024-09-19T10:56:39Z" duration-ms="7100" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- settingUp -->
+        <test-method signature="contactTest()[pri:0, instance:TestCases.ContactUsTest@342c38f8]" started-at="2024-09-19T10:56:39Z" name="contactTest" finished-at="2024-09-19T10:56:44Z" duration-ms="4928" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- contactTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.ContactUsTest@342c38f8]" started-at="2024-09-19T10:56:44Z" name="tearDown" finished-at="2024-09-19T10:56:44Z" duration-ms="129" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- TestCases.ContactUsTest -->
+      <class name="TestCases.SigninTest">
+        <test-method is-config="true" signature="settingUp()[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:03Z" name="settingUp" finished-at="2024-09-19T10:56:08Z" duration-ms="4587" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- settingUp -->
+        <test-method signature="InvalidUserTest(java.lang.String, java.lang.String)[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:08Z" name="InvalidUserTest" data-provider="getData" finished-at="2024-09-19T10:56:15Z" duration-ms="6699" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[iosa51@maildrop.cc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[12345678]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidUserTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:15Z" name="tearDown" finished-at="2024-09-19T10:56:15Z" duration-ms="127" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="settingUp()[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:15Z" name="settingUp" finished-at="2024-09-19T10:56:19Z" duration-ms="4847" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- settingUp -->
+        <test-method signature="InvalidUserTest(java.lang.String, java.lang.String)[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:19Z" name="InvalidUserTest" data-provider="getData" finished-at="2024-09-19T10:56:26Z" duration-ms="6627" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[gdpr1111@maildrop.cc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[12345678]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidUserTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:26Z" name="tearDown" finished-at="2024-09-19T10:56:26Z" duration-ms="127" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="settingUp()[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:26Z" name="settingUp" finished-at="2024-09-19T10:56:31Z" duration-ms="4493" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- settingUp -->
+        <test-method signature="ValidUserTest(java.lang.String, java.lang.String)[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:31Z" name="ValidUserTest" data-provider="getData" finished-at="2024-09-19T10:56:32Z" duration-ms="1223" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[iosa50@maildrop.cc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[12345678]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidUserTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.SigninTest@43dac38f]" started-at="2024-09-19T10:56:32Z" name="tearDown" finished-at="2024-09-19T10:56:32Z" duration-ms="110" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- TestCases.SigninTest -->
+    </test> <!-- SigninTest -->
+  </suite> <!-- Suite -->
+</testng-results>

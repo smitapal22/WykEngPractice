@@ -25,6 +25,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import Listeners.WebEventListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -37,15 +40,19 @@ public class Page {
 	//public  static EventFiringDecorator e_driver;
 	//public static WebEventListener eventListener;
 	public static WebEventListener webEventListener;
+	
 	//public OptionsManager optionsManager;
 	
-	//public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+	//public static ThreadLocal<WebDriver> tldriver = new ThreadLocal<WebDriver>();
 
-	//public static synchronized WebDriver getDriver() {
-		//return tlDriver.get();
-	//}
+	/*public static synchronized WebDriver getDriver() {
+		return tldriver.get();
+	}
+	private void setDriver(RemoteWebDriver remoteWebDriver) {
+		tldriver.set(remoteWebDriver);
+	   }*/
 	
-	public Page(){
+	/*public Page(){
 		try {
 			prop = new Properties();
 			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+ "/src/main/java/Config/config.properties");
@@ -55,26 +62,43 @@ public class Page {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	*/
 	
-	
-	public static void initialization() throws MalformedURLException{
-		String browserName = prop.getProperty("browser");
-		
-		if(browserName.equals("chrome")){
-			ChromeOptions chromeOptions = new ChromeOptions();
-			chromeOptions.setCapability("browserName", "chrome");
-			driver= new RemoteWebDriver(new URL("http://localhost:4445/wd/hub"),chromeOptions);
+	@BeforeMethod
+	@Parameters("browser")
+	public void initialization(String browser) throws MalformedURLException{
+		//String browserName = prop.getProperty("browser");
+		DesiredCapabilities cap = new DesiredCapabilities();
+		if(browser.equals("chrome")){
+			//cap.setCapability("browser", "chrome");
+			cap.setBrowserName("chrome");
+			//ChromeOptions chromeOptions = new ChromeOptions();
+			//chromeOptions.setCapability("browser", "chrome");
+			//tldriver.set(new ChromeDriver());
+			//System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "//src/test//resources//executable//chromedriver.exe");
+			//driver = new RemoteWebDriver(new URL("http://localhost:4445"),chromeOptions);
+			
+			
 			//WebDriverManager.chromedriver().setup();
-			//System.setProperty("webdriver.chrome.driver", "/Users/naveenkhunteta/Downloads/chromedriver");	
+			//tldriver.set(new ChromeDriver());
 			//driver = new ChromeDriver(); 
+			System.out.println("Launching chrome");
 		}
-		else if(browserName.equals("firefox")){
-			FirefoxOptions firefoxOptions = new FirefoxOptions();
-			firefoxOptions.setCapability("browserName", "firefox");
-			driver= new RemoteWebDriver(new URL("http://localhost:4445/wd/hub"),firefoxOptions);
+		else if(browser.equals("firefox")){
+			//cap.setCapability("browser", "chrome");
+			cap.setBrowserName("firefox");
+			//FirefoxOptions firefoxOptions = new FirefoxOptions();
+			//firefoxOptions.setCapability("browser", "firefox");
+			//tldriver.set(new FirefoxDriver());
+			//System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "//src/test//resources//executable//geckodriver.exe");
+			//driver=new RemoteWebDriver(new URL("http://localhost:4445"),firefoxOptions);
+			
+			//driver= new RemoteWebDriver(new URL(prop.getProperty("huburl")),firefoxOptions);
+			
 			//WebDriverManager.firefoxdriver().setup();	
 			//driver = new FirefoxDriver(); 
+			//driver.set(new FirefoxDriver());
+			System.out.println("Launching firefox");
 			
 		}
 		
@@ -87,15 +111,14 @@ public class Page {
 		//eventListener = new WebEventListener();
 		//e_driver.createDecorated(driver);
 		//driver = e_driver;
-		
-		driver.manage().window().maximize();
+		driver = new RemoteWebDriver(new URL("http://smitapal22:zalenium2024@34.44.56.157/wd/hub"), cap);
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(Utilities.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(Utilities.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		
-		driver.get(prop.getProperty("url"));
-		//driver.manage().deleteAllCookies();
-		driver.get(prop.getProperty("url"));
+		driver.get(Constants.testurl);
+		driver.manage().deleteAllCookies();
+		//getDriver().get(prop.getProperty("url"));
 		
 	}
 	/*public WebDriver init_driver(Properties prop) {
@@ -227,4 +250,12 @@ public class Page {
 		// driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		return getDriver();
 	}*/
+	
+	@AfterMethod
+	public void tearDown(){
+		if(driver!=null) {
+		driver.quit();
+		
+		}
+	}
 }

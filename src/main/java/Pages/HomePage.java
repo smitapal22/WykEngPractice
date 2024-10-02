@@ -2,14 +2,17 @@ package Pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import Base.Page;
+import Base.Page1;
 
-public class HomePage extends Page{
+public class HomePage extends Page1{
 	
 	public HomePage() {
 		
@@ -17,15 +20,28 @@ public class HomePage extends Page{
 		PageFactory.initElements(factory, this);
 	}
 	
-	@FindBy(how=How.XPATH,using="//*[@id=\"root\"]/div[2]/header/div/div[1]/div[1]/button")
+	@FindAll( {
+		   @FindBy(how=How.XPATH,using="//*[@id=\"root\"]/div[2]/header/div/div[3]/div[2]/button"),
+		   @FindBy(how=How.XPATH,using="/html/body/div[1]/div[2]/header/div/div[1]/div[1]/button")
+		} )
 	public WebElement enLanguage;
-	@FindBy(how=How.XPATH,using="//div[@class='wzrk-button-container']/button[@id='wzrk-cancel']")
+	
+	@FindBy(how=How.XPATH,using="//*[@id=\"wzrk-cancel\"]")
 	public WebElement noThanksBtn;
-	@FindBy(how=How.XPATH,using="//button[text()='Accept All']")
+	//@FindBy({
+		   //@FindBy(how=How.XPATH,using="/html/body/div[1]/div[2]/div[2]/div/div/div/div[4]/div[1]/button"),
+	@FindBy(how=How.XPATH,using="//*[@id=\"root\"]/div[2]/div[2]/div/div/div/div[4]/div[1]/button")
+	//})
 	public WebElement acceptAllBtn;
-	@FindBy(how=How.XPATH,using="//button[@class='btn menu-icon']")
+	//@FindAll( {
+		   //@FindBy(how=How.XPATH,using="/html/body/div[1]/div[2]/header/div/div[1]/button[1]/img"),
+		   @FindBy(how=How.XPATH,using="//*[@id=\"root\"]/div[2]/header/div/div[3]/button[2]/img")
+		//} )
 	public WebElement menuBtn;
-	@FindBy(how=How.XPATH,using="//button[@class='btn subscribe-btn']")
+	//@FindAll( {
+		  // @FindBy(how=How.XPATH,using="/html/body/div[1]/div[2]/header/div/div[1]/button[2]/span"),
+	 @FindBy(how=How.XPATH,using="//button[@class='btn subscribe-btn']")
+		//} )
 	public WebElement subscribeBtn;
 	
 	

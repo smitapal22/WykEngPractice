@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DemoRemote {
 
-	public static void main(String[] args) throws MalformedURLException {
+	/*public static void main(String[] args) throws MalformedURLException {
 		
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setBrowserName("chrome");
@@ -21,5 +21,5 @@ public class DemoRemote {
 		driver.get("https://wyk2.weyyak.com/");
 		System.out.println(driver.getTitle());
 		
-	}
+	}*/
 }

@@ -14,27 +14,29 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import Base.Page;
+import Base.Page1;
 import Pages.ContactUsPage;
 import Pages.HomePage;
 import Pages.MenuPage;
 import Pages.SigninOrRegisterPage;
 
 
-public class ContactUsTest extends Page{
+public class ContactUsTest extends Page1{
 	//WebDriver driver;
 	HomePage homePage;
 	MenuPage menuPage;
 	//SigninOrRegisterPage signinOrRegisterPage;
 	ContactUsPage contactUsPage;
+	SigninOrRegisterPage signinOrRegisterPage;
 	
 	
 	
-	public ContactUsTest() {
+	/*public ContactUsTest() {
 		super();
-	}
-	@BeforeMethod
-	public void settingUp() throws InterruptedException, MalformedURLException{
-		initialization();
+	}*/
+	/*@BeforeMethod
+	public void settingUp(){
+		initialization("browser");
 		//utils = new Utilities();
 		//init_driver(prop);
 		//Utilities.runTimeInfo("error", "login successful");
@@ -42,22 +44,32 @@ public class ContactUsTest extends Page{
 		homePage = new HomePage();
 		menuPage = new MenuPage();
 		contactUsPage = new ContactUsPage();
-	}
-	@Test
+	}*/
+	
+	@Test()
 	public void contactTest() {
-		homePage.clickOnEnBtn();
+		HomePage homePage = new HomePage();
+		MenuPage menuPage = new MenuPage();
+		//SigninOrRegisterPage signinOrRegisterPage = new SigninOrRegisterPage();
+		/*homePage.clickOnEnBtn();
 		homePage.clickOnnoThanksBtn();
 		homePage.clickOnAcceptAll();
 		homePage.clickOnMenuBtn();
+		menuPage.clickOnSigninOrRegisterOption();
+		signinOrRegisterPage.doLogin(username, password);
+		homePage.clickOnMenuBtn();*/
+		SigninTest.ValidUserTest("iosa22@maildrop.cc","12345678");
+		//homePage.clickOnMenuBtn();
 		menuPage.clickOnContactUs();
-		contactUsPage.EnterTextInEmailField("iosa50@maildrop.cc");
+		contactUsPage.EnterTextInEmailField("iosa22@maildrop.cc");
 		contactUsPage.ClickOnSubjectDropdown();
 		contactUsPage.SelectSubjectDropdown("Data Privacy Enquiry / Request");
 		contactUsPage.EnterMobileNoInMobField("8676487678");
 		contactUsPage.EnterTextInContentField("Test");
 		contactUsPage.ClickOnSubmitBtn();
-		Wait<WebDriver> wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
-	    WebElement toastElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Thank you for contacting weyyak! we will be in touch with you shortly.']")));
+		//Wait<WebDriver> wait = new WebDriverWait(driver, Duration.);
+		
+	    WebElement toastElement = new WebDriverWait(driver,java.time.Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Thank you for contacting weyyak! we will be in touch with you shortly.']")));
 	    String toastMessage = toastElement.getText();
 	   // String expectedToastMessage = "Thank you for contacting weyyak! we will be in touch with you shortly.";
 	    if (toastMessage.equals("Thank you for contacting weyyak! we will be in touch with you shortly.")) {
@@ -67,15 +79,10 @@ public class ContactUsTest extends Page{
 	    }
 
 	    // Wait for the toast message to disappear
-	    wait.until(ExpectedConditions.invisibilityOf(toastElement));
+	    new WebDriverWait(driver,java.time.Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOf(toastElement));
 }
 		
-	@AfterMethod
-	public void tearDown(){
-		if(driver!=null) {
-		driver.quit();
-		}
-	}
+	
 
 }
 

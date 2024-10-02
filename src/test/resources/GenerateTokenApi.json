@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "access_token": {
+      "type": "string"
+    },
+    "expires_in": {
+      "type": "integer"
+    },
+    "refresh_token": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "token_type": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "additionalProperties": false
+}
